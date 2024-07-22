@@ -21,7 +21,7 @@ function TaskList() {
 
     const fetchTasks = async () => {
         try {
-            const response = await fetch('http://localhost:7000/tasks');
+            const response = await fetch('https://task-manager-application-t0iw.onrender.com/tasks');
             const data = await response.json();
             setTasks(data);
             setFilteredTask(data);
@@ -47,7 +47,7 @@ function TaskList() {
 
     const handleDelete = async (taskId) => {
         try {
-            await fetch(`http://localhost:7000/tasks/${taskId}`, {
+            await fetch(`https://task-manager-application-t0iw.onrender.com/${taskId}`, {
                 method: 'DELETE'
             });
             setTasks(tasks.filter(task => task._id !== taskId));
@@ -67,7 +67,7 @@ function TaskList() {
 
     const updateTaskStatus = async (task, status) => {
         try {
-            await fetch(`http://localhost:7000/tasks/${task._id}`, {
+            await fetch(`https://task-manager-application-t0iw.onrender.com/tasks/${task._id}`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ ...task, status })

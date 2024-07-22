@@ -34,7 +34,7 @@ function AddTask({onTaskAdded}) {
         if (Object.keys(formErrors).length === 0) {
             const createdAt = new Date(); // Generate current date and time
             try {
-                const response = await fetch("http://localhost:7000/tasks", {
+                const response = await fetch("https://task-manager-application-t0iw.onrender.com/tasks", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ title, description, status })

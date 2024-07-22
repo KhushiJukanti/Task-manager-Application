@@ -40,7 +40,7 @@ function Signup() {
     }
 
     const signup = () => {
-        fetch("http://localhost:7000/user/signup", {
+        fetch("https://task-manager-application-t0iw.onrender.com/user/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)

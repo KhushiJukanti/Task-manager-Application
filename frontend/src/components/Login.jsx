@@ -39,7 +39,7 @@ function Login() {
         setErrors(errors);
         if (Object.keys(errors).length === 0) {
             try {
-                const response = await fetch("http://localhost:7000/user/login", {
+                const response = await fetch("https://task-manager-application-t0iw.onrender.com/user/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password })
@@ -84,7 +84,7 @@ function Login() {
                                         const decoded = jwtDecode(credentialResponse.credential);
                                         console.log(decoded);
                                         // Send the token to your server for verification and authentication
-                                        fetch("http://localhost:7000/user/google", {
+                                        fetch("https://task-manager-application-t0iw.onrender.com/user/google", {
                                             method: "POST",
                                             headers: { "Content-Type": "application/json" },
                                             body: JSON.stringify({ token: credentialResponse.credential })

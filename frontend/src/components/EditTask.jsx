@@ -7,7 +7,7 @@ function EditTask({ task, onClose }) {
 
     const handleSave = async () => {
         try {
-            await fetch(`http://localhost:7000/tasks/${task._id}`, {
+            await fetch(`https://task-manager-application-t0iw.onrender.com/tasks/${task._id}`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title, description, status })

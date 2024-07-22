@@ -52,7 +52,7 @@ function Navbar() {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/signup" style={{ color: 'white' }}>Signup</Link>
+                  <Link className="nav-link" to="/" style={{ color: 'white' }}>Signup</Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/login" className="nav-link" style={{ color: 'white' }}>Login</Link>
