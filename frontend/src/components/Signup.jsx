@@ -1,42 +1,43 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import React from 'react'
-import '../App.css'
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import '../App.css';
 
 function Signup() {
 
-    const [user, setUser] = useState({ email: "", firstname: "", lastname: "", password: "", confirm_password: "" })
-    const [errors, setErrors] = useState({})
-    const [isError, setIsError] = useState(false)
-    const [errMessage, setErrMessage] = useState("")
+    const [user, setUser] = useState({ email: "", firstname: "", lastname: "", password: "", confirm_password: "" });
+    const [errors, setErrors] = useState({});
+    const [isError, setIsError] = useState(false);
+    const [errMessage, setErrMessage] = useState("");
 
     const navigate = useNavigate();
 
     const onFieldChange = (e) => {
-        // console.log(e.target.name, e.target.value)
         setUser((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
-        }))
+        }));
     }
 
     const validateFormFields = () => {
         let errors = {};
-        if (!user.firstname) {
-            errors.firstname = "please Enter the first name"
-        } if (!user.lastname) {
-            errors.lastname = "please Enter the last name"
-        } if (!user.email) {
-            errors.email = "Please enter a valid email address"
-        } if (!user.password) {
-            errors.password = "Password is required"
+        if (!user.firstname.trim()) {
+            errors.firstname = "Please enter a valid first name";
+        }
+        if (!user.lastname.trim()) {
+            errors.lastname = "Please enter a valid last name";
+        }
+        if (!user.email.trim()) {
+            errors.email = "Please enter a valid email address";
+        }
+        if (!user.password) {
+            errors.password = "Password is required";
         } else if (!user.confirm_password) {
-            errors.confirm_password = "Re-Password is required"
+            errors.confirm_password = "Re-Password is required";
         } else if (user.password !== user.confirm_password) {
             errors.confirm_password = "Passwords do not match";
         }
-        return errors
-
+        return errors;
     }
 
     const signup = () => {
@@ -46,21 +47,20 @@ function Signup() {
             body: JSON.stringify(user)
         }).then((res) => res.json()).then((result) => {
             if (result.success) {
-                navigate("/login")
+                navigate("/login");
             } else {
                 setIsError(true);
-                setErrMessage(result.message)
+                setErrMessage(result.message);
             }
-        })
+        });
     }
 
     const register = (e) => {
         e.preventDefault();
-        let errors = validateFormFields()
-        setErrors(errors)
+        let errors = validateFormFields();
+        setErrors(errors);
         if (Object.keys(errors).length === 0) {
-            // no errors here please call to backend
-            signup()
+            signup();
         }
     }
 
@@ -71,9 +71,7 @@ function Signup() {
                     <h2 className='text-start'style={{color:'#106EBE'}}>Signup</h2>
                     <div className='card' style={{border: "2px solid #106EBE"}}>
                         <div className='card-body mt-3'>
-
                             <form onSubmit={register}>
-
                                 <div className='mb-4'>
                                     <input placeholder='First Name' type='text' className='form-control' value={user.firstname} onChange={onFieldChange} name='firstname' />
                                 </div>
@@ -105,9 +103,6 @@ function Signup() {
                                     <span>Alredy you have an Account?</span> <Link to='/login' className="link-offset-2 link-underline link-underline-opacity-10">Login</Link>
                                 </div>
 
-
-
-
                                 {isError && <div className='mb-5'>
                                     <h4 style={{ color: '#106EBE' }}>{errMessage}</h4>
                                 </div>}
@@ -115,11 +110,9 @@ function Signup() {
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     )
 }
 
-export default Signup
+export default Signup;
