@@ -8,7 +8,7 @@ import React from 'react'
 
 function Login() {
 
-    const [email, setEmail] = useState(" ")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isError, setIsError] = useState(false)
     const [errMessage, setErrMessage] = useState("")

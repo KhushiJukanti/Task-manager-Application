@@ -64,8 +64,6 @@ function AddTask({onTaskAdded}) {
 
     const closeForm = () => {
         setShowForm(false);
-        // setTitle("");
-        // setDescription("");
     };
 
     return (
