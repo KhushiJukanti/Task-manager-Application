@@ -7,7 +7,7 @@ const { OAuth2Client } = require('google-auth-library');
 
 const client = new OAuth2Client(process.env.Google_Id);
 
-// Register Route
+
 router.post('/signup', async (req, res) => {
   const { firstname, lastname, email, password, confirm_password } = req.body;
   if (password !== confirm_password) {
